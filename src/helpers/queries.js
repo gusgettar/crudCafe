@@ -23,6 +23,22 @@ export const buscarProductoAPI = async(id)=>{
     }
 }
 //PUT o PATH
+export const editarProductoAPI = async(productoEditado, id)=>{
+    try {
+    const respuesta = await fetch(URLProducto+'/'+id,{
+        method: "PUT",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify(productoEditado)
+    })
+    
+    return respuesta;
+   } catch (error) {
+    console.error(error)
+    return false;
+}
+}
 
 //POST
 export const crearProductoAPI = async(productoNuevo)=>{
