@@ -1,14 +1,38 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button, Card, Container, Form, Row } from "react-bootstrap";
+import { login } from "../../helpers/queries";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setUsuarioLogueado}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+  const navegacion = useNavigate()
+
+  const onSubmit = (usuario)=>{
+    console.log(usuario)
+    if(login(usuario)){
+      Swal.fire({
+        title: "usuario logueado",
+        text: `Bienvenido a crudCafe`,
+        icon: "success"
+      });
+      setUsuarioLogueado(usuario.email)
+      navegacion('/administrador')
+    }
+    else{
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: `usuario o contraseña incorrectos `,
+        icon: "error"
+      });
+    }
+  }
   return (
     <section className="mainSection align-content-center">
       <Container className="">
@@ -18,7 +42,7 @@ const Login = () => {
               <div className="justify-content-center d-flex">
                 <Card.Title>Login</Card.Title>
               </div>
-              <Form>
+              <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                   <Form.Label>Email</Form.Label>
                   <Form.Control type="email" placeholder="Ejemplo@gmail.com" 
@@ -39,7 +63,7 @@ const Login = () => {
                 <Form.Group className="mb-4" controlId="formGroupPassword">
                   <Form.Label>Contraseña</Form.Label>
                   <Form.Control type="password" placeholder="Ejemplo123" 
-                  {...register("contrasenia", {
+                  {...register("password", {
                     required: "La contraseña es un campo obligatorio",
                     minLength:{
                         value: 8,

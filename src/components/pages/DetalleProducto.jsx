@@ -13,7 +13,7 @@ const DetalleProducto = () => {
           </Col>
           <Col md={6}>
             <Card.Body>
-              <Card.Title className="primary-font">Capuchino</Card.Title>
+              <Card.Title className="primary-font">Cafe</Card.Title>
               <hr />
               <Card.Text>
               El café americano es una bebida caliente que consiste en un espresso diluido con agua caliente, lo que resulta en una taza de café suave y aromático. Es una opción popular para aquellos que prefieren un café menos intenso que el espresso tradicional. Perfecto para disfrutar en cualquier momento del día.

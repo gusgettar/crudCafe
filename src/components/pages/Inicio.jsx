@@ -1,8 +1,31 @@
 import { Container, Row } from "react-bootstrap";
 import CardProducto from "./producto/CardProducto";
+import { useEffect,useState } from "react";
+import { leerProductosAPI } from "../../helpers/queries";
 
 
 const Inicio = () => {
+
+  const [listaProductos, setListaProductos] = useState([])
+
+useEffect(()=>{
+  obtenerProductos()
+},[])
+
+const obtenerProductos = async()=>{
+  const respuesta = await leerProductosAPI()
+  console.log(respuesta)
+  if(respuesta.status === 200){
+    const datos = await respuesta.json();
+    setListaProductos(datos);
+  }else{
+    Swal.fire({
+      title: "Ocurrio un error",
+      text: `En estos momentos no podemos mostrar los productos, intenta en breve.`,
+      icon: "error"
+    });
+  }
+}
   return (
     <section className="mainSection">
       <img
@@ -15,11 +38,11 @@ const Inicio = () => {
         <hr />
 
         <Row>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
+          {
+            listaProductos.map((producto,posicion)=> <CardProducto key={posicion} producto = {producto}></CardProducto> )
+          }
+           
+          
         </Row>
       </Container>
     </section>

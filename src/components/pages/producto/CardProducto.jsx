@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import { Col, Card, Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 
-const CardProducto = () => {
+
+const CardProducto = ({ producto }) => {
+  const navegacion = useNavigate()
   return (
     <Col md={4} lg={3} className="mb-3">
       <Card className="h-100">
@@ -12,17 +16,16 @@ const CardProducto = () => {
           />
         </div>
         <Card.Body>
-          <Card.Title className="primary-font">Capuchino</Card.Title>
+          <Card.Title className="primary-font">
+            {producto.nombreProducto}
+          </Card.Title>
           <Card.Text>
-            Descripción: Descripción: Espuma de leche cremosa sobre un espresso
-            fuerte. <br className="mb-2" />
-            <span className="fw-bold">Precio: $350</span>
+            {producto.descripcion_breve} <br className="mb-2" />
+            <span className="fw-bold">{producto.precio}</span>
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-end">
-          <Button variant="success" className="me-2">
-            Ver más
-          </Button>
+          <Link>Ver Mas </Link>
         </Card.Footer>
       </Card>
     </Col>
