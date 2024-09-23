@@ -23,7 +23,7 @@ function App() {
       {/* <Inicio></Inicio> */}
       {/* <Administrador></Administrador> */}
       <BrowserRouter>
-      <Menu usuarioLogueado={usuarioLogueado}></Menu>
+      <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado}></Menu>
         <Routes> 
           <Route exact path="/" element={<Inicio></Inicio>}></Route>
           <Route exact path="/detalleproducto" element={<DetalleProducto></DetalleProducto>}></Route>
