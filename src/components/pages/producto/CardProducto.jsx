@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Col, Card, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import DetalleProducto from "../DetalleProducto";
 
 
 const CardProducto = ({ producto }) => {
@@ -10,7 +11,7 @@ const CardProducto = ({ producto }) => {
       <Card className="h-100">
         <div>
           <img
-            src="https://images.pexels.com/photos/414555/pexels-photo-414555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src={producto.imagen}
             alt="cafe"
             className="card-img-top-nueva"
           />
@@ -25,7 +26,10 @@ const CardProducto = ({ producto }) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-end">
-          <Link>Ver Mas </Link>
+        <Link className="btn btn-warning me-lg-2" to={`/detalleproducto`} state={{producto}}> 
+                Ver Mas (PASAR POR PARAMETRO EL PRODUCTO COMO EN EL EDITAR /ID)
+        </Link>
+      
         </Card.Footer>
       </Card>
     </Col>

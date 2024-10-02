@@ -1,6 +1,9 @@
 import { Container, Card, Row, Col } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 
 const DetalleProducto = () => {
+  const location = useLocation()
+  const {producto} = location.state
   return (
     <Container className="my-3 mainSection">
       <Card>
@@ -8,20 +11,19 @@ const DetalleProducto = () => {
           <Col md={6}>
             <Card.Img
               variant="top"
-              src="https://images.pexels.com/photos/414555/pexels-photo-414555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={producto.imagen}
             />
           </Col>
           <Col md={6}>
             <Card.Body>
-              <Card.Title className="primary-font">Cafe</Card.Title>
+              <Card.Title className="primary-font">{producto.nombreProducto}</Card.Title>
               <hr />
               <Card.Text>
-              El café americano es una bebida caliente que consiste en un espresso diluido con agua caliente, lo que resulta en una taza de café suave y aromático. Es una opción popular para aquellos que prefieren un café menos intenso que el espresso tradicional. Perfecto para disfrutar en cualquier momento del día.
+              descripcion: {producto.descripcion_breve}              <br/>
               <br/>
-              <br/>
-              <span className="primary-font fw-semibold ">Categoria:</span> Infusiones
+              <span className="primary-font fw-semibold ">categoria: {producto.categoria}</span>
               <br className='mb-3'/>
-              <span className="primary-font fw-semibold ">Precio: $1000</span></Card.Text>
+              <span className="primary-font fw-semibold ">precio: ${producto.precio}</span></Card.Text>
             </Card.Body>
           </Col>
         </Row>
