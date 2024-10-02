@@ -27,7 +27,7 @@ const CardProducto = ({ producto }) => {
         </Card.Body>
         <Card.Footer className="text-end">
         <Link className="btn btn-warning me-lg-2" to={`/detalleproducto`} state={{producto}}> 
-                Ver Mas (PASAR POR PARAMETRO EL PRODUCTO COMO EN EL EDITAR /ID)
+                Ver Mas
         </Link>
       
         </Card.Footer>
