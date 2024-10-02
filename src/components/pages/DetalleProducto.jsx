@@ -16,7 +16,7 @@ const DetalleProducto = () => {
           </Col>
           <Col md={6}>
             <Card.Body>
-              <Card.Title className="primary-font">{producto.nombreProducto}</Card.Title>
+              <Card.Title className="primary-font">{producto.nombreProducto.toUpperCase()}</Card.Title>
               <hr />
               <Card.Text>
               descripcion: {producto.descripcion_breve}              <br/>
